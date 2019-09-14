@@ -22,6 +22,8 @@ import java.nio.file.Files;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import com.google.api.client.http.*;
+import com.google.api.client.util.ExponentialBackOff;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -100,6 +102,8 @@ public class RestUtil {
         HttpRequest restRequest = REQUEST_FACTORY.buildPostRequest(
                 new GenericUrl(importCmd), content);
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
         //logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -143,6 +147,8 @@ public class RestUtil {
 
 		HttpRequest restRequest = REQUEST_FACTORY.buildPostRequest(new GenericUrl(importCmd), content);
 		restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
 		//logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -176,6 +182,8 @@ public class RestUtil {
         HttpRequest restRequest = REQUEST_FACTORY.buildPutRequest(
                 new GenericUrl(importCmd), content);
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
         //logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -222,6 +230,8 @@ public class RestUtil {
 
 		HttpRequest restRequest = REQUEST_FACTORY.buildPutRequest(new GenericUrl(importCmd), content);
 		restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
 		//logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -246,6 +256,8 @@ public class RestUtil {
 
 		HttpRequest restRequest = REQUEST_FACTORY.buildDeleteRequest(new GenericUrl(importCmd));
 		restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
 		//logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -289,6 +301,8 @@ public class RestUtil {
                     new GenericUrl(importCmd));
         }
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
         //logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -314,6 +328,8 @@ public class RestUtil {
                         + profile.getOrg() + "/environments/"
                         + profile.getEnvironment() + "/" + resource));
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
         
         //logger.debug(PrintUtil.formatRequest(restRequest));
 
@@ -365,6 +381,8 @@ public class RestUtil {
 		
 		HttpRequest restRequest = APACHE_REQUEST_FACTORY.buildRequest(HttpMethods.PATCH, new GenericUrl(importCmd), content);
 		restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 		
 		//logger.info(PrintUtil.formatRequest(restRequest));
 		
@@ -398,6 +416,8 @@ public class RestUtil {
         HttpRequest restRequest = REQUEST_FACTORY.buildPostRequest(
                 new GenericUrl(importCmd), content);
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
         
         //logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -439,6 +459,8 @@ public class RestUtil {
 
 		HttpRequest restRequest = REQUEST_FACTORY.buildPostRequest(new GenericUrl(importCmd), content);
 		restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
 		//logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -471,6 +493,8 @@ public class RestUtil {
         HttpRequest restRequest = REQUEST_FACTORY.buildPutRequest(
                 new GenericUrl(importCmd), content);
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
         
         //logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -517,6 +541,8 @@ public class RestUtil {
 
 		HttpRequest restRequest = REQUEST_FACTORY.buildPutRequest(new GenericUrl(importCmd), content);
 		restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
 		//logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -545,6 +571,8 @@ public class RestUtil {
         HttpRequest restRequest = REQUEST_FACTORY.buildDeleteRequest(
                                                     new GenericUrl(importCmd));
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
         //logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -568,6 +596,8 @@ public class RestUtil {
 
 		HttpRequest restRequest = REQUEST_FACTORY.buildDeleteRequest(new GenericUrl(importCmd));
 		restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
 		//logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -592,6 +622,8 @@ public class RestUtil {
                         + profile.getApi_version() + "/organizations/"
                         + profile.getOrg() + "/" + resource));
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
         //logger.debug(PrintUtil.formatRequest(restRequest));
 
@@ -645,6 +677,8 @@ public class RestUtil {
         HttpRequest restRequest = REQUEST_FACTORY.buildPostRequest(
                 new GenericUrl(importCmd), content);
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
         //logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -689,6 +723,8 @@ public class RestUtil {
 
     		HttpRequest restRequest = REQUEST_FACTORY.buildPostRequest(new GenericUrl(importCmd), content);
     		restRequest.setReadTimeout(0);
+            restRequest.setNumberOfRetries(3);
+            restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
     		//logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -723,6 +759,8 @@ public class RestUtil {
         HttpRequest restRequest = REQUEST_FACTORY.buildPutRequest(
                 new GenericUrl(importCmd), content);
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
         //logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -770,6 +808,8 @@ public class RestUtil {
 
 		HttpRequest restRequest = REQUEST_FACTORY.buildPutRequest(new GenericUrl(importCmd), content);
 		restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
 		//logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -801,6 +841,8 @@ public class RestUtil {
         HttpRequest restRequest = REQUEST_FACTORY.buildDeleteRequest(
                 new GenericUrl(importCmd));
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
         //logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -827,6 +869,8 @@ public class RestUtil {
                         + profile.getOrg() + "/apis/"
                         + api + "/" + resource));
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
         
         //logger.debug(PrintUtil.formatRequest(restRequest));
 
@@ -871,6 +915,8 @@ public class RestUtil {
 
 		HttpRequest restRequest = REQUEST_FACTORY.buildDeleteRequest(new GenericUrl(importCmd));
 		restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
 		//logger.info(PrintUtil.formatRequest(restRequest));
 
@@ -902,6 +948,8 @@ public class RestUtil {
 	                        + profile.getApi_version() + "/organizations/"
 	                        + profile.getOrg() + "/apis/"));
 	        restRequest.setReadTimeout(0);
+            restRequest.setNumberOfRetries(3);
+            restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 	
 	        try {
 	            HttpResponse response = executeAPI(profile, restRequest);            
@@ -922,6 +970,8 @@ public class RestUtil {
                 .buildGetRequest(
                         new GenericUrl(importCmd));
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
         HttpResponse response;
         try {
@@ -946,6 +996,8 @@ public class RestUtil {
                 .buildPostRequest(
                         new GenericUrl(importCmd), content);
         restRequest.setReadTimeout(0);
+        restRequest.setNumberOfRetries(3);
+        restRequest.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(new ExponentialBackOff()));
 
         HttpResponse response;
         try {
